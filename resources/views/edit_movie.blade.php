@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmes</title>
+    <title>Editar Informações</title>
 
     <style>
     body {
@@ -23,7 +23,7 @@
     form {
         max-width: 500px;
         margin: 0 auto;
-        padding: 40px;
+        padding: 20px;
         border: 1px solid #333;
         border-radius: 5px;
         background-color: #2b2b2b;
@@ -52,7 +52,6 @@
         display: block;
         width: 100%;
         padding: 10px;
-        margin-left: 8px;
         font-size: 16px;
         font-weight: bold;
         border: none;
@@ -69,38 +68,39 @@
 
     </style>
 </head>
-<body>
-    <h1>Cadastro de Filmes</h1>
-    <form action="/registerMovie" method="POST">
-        @csrf
 
+<body>
+    <h1>Editar Informações do Filme</h1>
+    <form action="/updateMovie/{{ $movie->id }}" method="POST">
+        @csrf
+        @method("PUT")
         <div>
             <label for="name">Título:</label>
-            <input type="text" id="name" placeholder="Nome do Filme Aqui" name="name" required>
+            <input type="text" id="name" placeholder="Nome do Filme Aqui" name="name" value="{{ $movie -> name }}" required>
         </div>
 
         <div>
             <label for="genres">Gênero do Filme:</label>
-            <input type="text" id="genres" placeholder="Gênero" name="genres" required>
+            <input type="text" id="genres" placeholder="Gênero" name="genres" value="{{ $movie -> genres }}" required>
         </div>
 
         <div>
             <label for="date">Data de Lançamento:</label>
-            <input type="text" id="date" placeholder="Data que lançou o filme" name="date" required>
+            <input type="text" id="date" placeholder="Data que lançou o filme" name="date" value="{{ $movie -> date }}" required>
         </div>
 
         <div>
             <label for="director">Diretor:</label>
-            <input type="text" id="director" placeholder="Diretor do Filme" name="director" required>
+            <input type="text" id="director" placeholder="Diretor do Filme" name="director" value="{{ $movie -> director }}" required>
         </div>
 
         <div>
             <label for="cast">Elenco:</label>
-            <input type="text" id="cast" placeholder="Elenco do Filme" name="cast" required>
+            <input type="text" id="cast" placeholder="Elenco do Filme" name="cast" value="{{ $movie -> cast }}" required>
         </div>
 
         <div>
-            <button type="submit">Salvar Filme</button>
+            <button type="submit">Editar Informações do Filme</button>
         </div>
     </form>
 
